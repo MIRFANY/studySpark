@@ -1,0 +1,191 @@
+body,
+html,
+#root,
+.dashboard-bg {
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: #232a3b url('https://www.transparenttextures.com/patterns/stardust.png');
+    background-size: 300px 300px;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.dashboard-bg {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+}
+
+.dashboard-sidebar {
+    width: 80px;
+    background: #1a2030;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0 1rem 0;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar-logo {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    letter-spacing: 1px;
+}
+
+.sidebar-logo span {
+    color: #ffd600;
+}
+
+.sidebar-btn {
+    background: none;
+    border: none;
+    color: #b0b8d1;
+    font-size: 1.5rem;
+    margin: 1.2rem 0;
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-btn.active,
+.sidebar-btn:hover {
+    background: #232a3b;
+    color: #ffd600;
+}
+
+.dashboard-main {
+    flex: 1;
+    padding: 2.5rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.dashboard-greeting h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.dashboard-greeting span {
+    color: #ffd600;
+    font-weight: 700;
+}
+
+.dashboard-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #ffd600;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+    justify-items: center;
+}
+
+.dashboard-card {
+    border-radius: 32px 16px 32px 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+    padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 220px;
+    min-width: 320px;
+    max-width: 380px;
+    width: 100%;
+    position: relative;
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.dashboard-card:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    transform: translateY(-4px) scale(1.03);
+}
+
+.dashboard-card-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+}
+
+.dashboard-card-desc {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.85;
+}
+
+.dashboard-card-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    transition: background 0.2s, color 0.2s;
+}
+
+.dashboard-card-btn:hover {
+    filter: brightness(0.95);
+}
+
+.dashboard-quickadd {
+    position: fixed;
+    right: 2.5rem;
+    bottom: 2.5rem;
+    background: #ffd600;
+    color: #232a3b;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.dashboard-quickadd:hover {
+    background: #ffe066;
+    color: #1a2030;
+}
+
+@media (max-width: 900px) {
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .dashboard-main {
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+}
