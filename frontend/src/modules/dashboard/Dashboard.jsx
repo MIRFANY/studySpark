@@ -34,7 +34,7 @@ const features = [
     color: "#7c3aed",
     bg: "#f3e8ff",
     btn: "Review Decks",
-    route: "/flashcards",
+    route: "/flashcards/active",
   },
 ];
 

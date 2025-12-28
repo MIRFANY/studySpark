@@ -1,0 +1,183 @@
+/* Modern, card-based UI for mnemonics list */
+.mnemonic-list-bg {
+  min-height: 100vh;
+  background: #232a3b url('https://www.transparenttextures.com/patterns/stardust.png');
+  background-size: 300px 300px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+.mnemonic-list-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  margin: 3rem 0;
+  width: 100%;
+  max-width: 600px;
+}
+.mnemonic-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.mnemonic-list-title {
+  color: #7c3aed;
+  font-size: 2rem;
+  font-weight: 800;
+}
+.mnemonic-add-btn {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+.mnemonic-add-btn:hover {
+  filter: brightness(0.93);
+}
+.mnemonic-list-controls {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.mnemonic-search {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #b0b8c9;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.mnemonic-search:focus {
+  border: 1.5px solid #7c3aed;
+}
+.mnemonic-tags-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+}
+.mnemonic-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.mnemonic-card {
+  background: #f7f8fa;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(60,40,120,0.07);
+  padding: 1.5rem 1.2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.mnemonic-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.mnemonic-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #3a2d5c;
+}
+.mnemonic-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.mnemonic-edit-btn, .mnemonic-delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+}
+.mnemonic-edit-btn:hover {
+  color: #7c3aed;
+}
+.mnemonic-delete-btn:hover {
+  color: #ff4d4f;
+}
+.mnemonic-card-mnemonic {
+  color: #7c6fae;
+  font-size: 1.05rem;
+}
+.mnemonic-card-details {
+  color: #4b3a6a;
+  font-size: 0.98rem;
+}
+.mnemonic-card-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.mnemonic-tag {
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.2rem 0.8rem;
+  margin-top: 0.2rem;
+  display: inline-block;
+}
+.mnemonic-view-btn {
+  background: #2bd2ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.mnemonic-view-btn:hover {
+  background: #43e97b;
+}
+.mnemonic-edit-form input,
+.mnemonic-edit-form textarea {
+  width: 100%;
+  margin-bottom: 0.7rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #b0b8c9;
+  font-size: 1rem;
+  outline: none;
+}
+.mnemonic-edit-actions {
+  display: flex;
+  gap: 1rem;
+}
+.mnemonic-cancel-btn {
+  background: #eee;
+  color: #7c3aed;
+}
+.mnemonic-empty {
+  color: #888;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 2rem 0;
+}
+@media (max-width: 600px) {
+  .mnemonic-list-container {
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    margin: 1.2rem 0;
+  }
+  .mnemonic-list-title {
+    font-size: 1.3rem;
+  }
+}

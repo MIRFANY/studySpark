@@ -11,7 +11,8 @@ import MnemonicsList from "./modules/mnemonics/MnemonicsList";
 import MnemonicDetail from "./modules/mnemonics/MnemonicDetail";
 import AddMnemonic from "./modules/mnemonics/AddMnemonic";
 import Flashcards from "./modules/flashcards/Flashcards";
-import FlashcardFortress from "./modules/flashcards/FlashcardFortress";
+import FlashcardActiveRecall from "./modules/flashcards/FlashcardActiveRecall";
+import FlashcardDetail from "./modules/flashcards/FlashcardDetail";
 import StudyPlanner from "./modules/planner/StudyPlanner";
 import ProgressTracker from "./modules/progress/ProgressTracker";
 import PracticeScenarios from "./modules/practice/PracticeScenarios";
@@ -29,10 +30,11 @@ function App() {
         <Route path="/mnemonics/add" element={<AddMnemonic />} />
         <Route path="/mnemonics/:id" element={<MnemonicDetail />} />
         <Route path="/flashcards" element={<Flashcards />} />
+        <Route path="/flashcards/:id" element={<FlashcardDetail />} />
         <Route path="/planner" element={<StudyPlanner />} />
         <Route path="/progress" element={<ProgressTracker />} />
         <Route path="/practice" element={<PracticeScenarios />} />
-        
+        <Route path="/flashcards/active" element={<FlashcardActiveRecall />} />
         <Route path="/community" element={<Community />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/resources" element={<Resources />} />

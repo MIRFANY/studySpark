@@ -8,7 +8,7 @@ const Flashcards = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/mnemonics")
+    fetch("http://localhost:5000/api/flashcards")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();

@@ -1,0 +1,177 @@
+.practice-bg {
+    min-height: 100vh;
+    background: #232a3b url('https://www.transparenttextures.com/patterns/stardust.png');
+    background-size: 300px 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.practice-container {
+    background: #fff;
+    border-radius: 24px 12px 24px 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+    padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+    min-width: 340px;
+    max-width: 540px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.practice-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #3a2d5c;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.practice-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.practice-tab {
+    padding: .5rem 1.2rem;
+    font-weight: 600;
+    background: #f7f8fa;
+    color: #2a4d69;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.practice-tab.active {
+    background: #7c3aed;
+    color: #fff;
+}
+
+.practice-card {
+    background: #f3e8ff;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(60, 40, 120, 0.07);
+    max-width: 420px;
+    width: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+    animation: fadeInCard 0.7s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.practice-question {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #3a2d5c;
+    margin-bottom: 1.2rem;
+}
+
+.practice-answer {
+    margin: 1rem 0;
+    color: #7c3aed;
+    font-size: 1.08rem;
+    font-weight: 600;
+    background: #fffbe3;
+    border-radius: 8px;
+    padding: 1rem;
+    animation: fadeInAnswer 0.5s cubic-bezier(.4, 0, .2, 1);
+}
+
+@keyframes fadeInAnswer {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.practice-show-btn {
+    background: #7c3aed;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.practice-show-btn:hover {
+    background: #a18cd1;
+}
+
+.practice-nav {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.practice-nav button {
+    background: #2bd2ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.3rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.practice-nav button:hover {
+    background: #43e97b;
+}
+
+.practice-case-count {
+    color: #888;
+    font-size: 0.98rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.practice-video {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(60, 40, 120, 0.07);
+}
+
+@media (max-width: 600px) {
+    .practice-container {
+        min-width: 0;
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+
+    .practice-card {
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem;
+    }
+
+    .practice-video {
+        max-width: 98vw;
+    }
+}

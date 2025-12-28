@@ -1,106 +1,172 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./StudyPlanner.css";
 
 const StudyPlanner = () => {
   const [tasks, setTasks] = useState([]);
   const [topic, setTopic] = useState("");
   const [date, setDate] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch tasks from backend when component mounts
+  useEffect(() => {
+    fetch("http://localhost:5000/api/tasks")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to fetch tasks");
+        return res.json();
+      })
+      .then((data) => {
+        setTasks(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  // Add new task to backend
   const handleAddTask = (e) => {
     e.preventDefault();
     if (!topic || !date) {
       setError("Please enter both topic and date.");
       return;
     }
-    setTasks([...tasks, { id: Date.now(), topic, date, done: false }]);
-    setTopic("");
-    setDate("");
-    setError(null);
+
+    fetch("http://localhost:5000/api/tasks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ topic, date, done: false }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to add task");
+        return res.json();
+      })
+      .then((newTask) => {
+        setTasks([...tasks, newTask]);
+        setTopic("");
+        setDate("");
+        setError(null);
+      })
+      .catch((err) => {
+        setError("Failed to add task: " + err.message);
+      });
   };
 
+  // Mark task as done in backend
   const markDone = (id) => {
-    setTasks(
-      tasks.map((task) => (task.id === id ? { ...task, done: true } : task))
-    );
+    fetch(`http://localhost:5000/api/tasks/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ done: true }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to update task");
+        return res.json();
+      })
+      .then((updatedTask) => {
+        setTasks(tasks.map((t) => (t.id === id ? updatedTask : t)));
+      })
+      .catch((err) => {
+        setError("Failed to mark task as done: " + err.message);
+      });
   };
+
+  if (loading) {
+    return (
+      <div className="planner-bg">
+        <div className="planner-container">
+          <p style={{ textAlign: "center", color: "#888" }}>Loading tasks...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div
-      className="mnemonic-detail"
-      style={{ maxWidth: 500, margin: "2rem auto" }}
-    >
-      <h2>Study Planner</h2>
-      <form onSubmit={handleAddTask} style={{ marginBottom: "2rem" }}>
-        <input
-          type="text"
-          placeholder="Topic"
-          value={topic}
-          onChange={(e) => setTopic(e.target.value)}
-          style={{ width: "60%", padding: ".5rem", marginRight: "1rem" }}
-        />
-        <input
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          style={{ padding: ".5rem", marginRight: "1rem" }}
-        />
-        <button type="submit" style={{ padding: ".5rem 1.2rem" }}>
-          Add
-        </button>
-        {error && <p style={{ color: "red", marginTop: "1rem" }}>{error}</p>}
-      </form>
-      <h3>Upcoming Tasks</h3>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {tasks.filter((t) => !t.done).length === 0 && (
-          <li>No upcoming tasks.</li>
+    <div className="planner-bg">
+      <div className="planner-container">
+        <div className="planner-title">Study Planner</div>
+        <form onSubmit={handleAddTask} className="planner-input-row">
+          <input
+            type="text"
+            className="planner-input"
+            placeholder="Topic"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+          />
+          <input
+            type="date"
+            className="planner-input"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+          <button type="submit" className="planner-add-btn">
+            Add
+          </button>
+        </form>
+        {error && (
+          <div style={{ color: "#ff4d4f", marginBottom: "1rem" }}>{error}</div>
         )}
-        {tasks
-          .filter((t) => !t.done)
-          .map((task) => (
-            <li
-              key={task.id}
-              style={{
-                marginBottom: "1rem",
-                background: "#f7f8fa",
-                padding: "1rem",
-                borderRadius: "8px",
-              }}
-            >
-              <strong>{task.topic}</strong> <br />
-              <span style={{ color: "#888" }}>{task.date}</span> <br />
-              <button
-                onClick={() => markDone(task.id)}
-                style={{ marginTop: "0.5rem", padding: ".3rem 1rem" }}
-              >
-                Mark as Done
-              </button>
+        <h3 style={{ marginTop: "2rem", marginBottom: "1rem" }}>
+          Upcoming Tasks
+        </h3>
+        <ul className="planner-task-list">
+          {tasks.filter((t) => !t.done).length === 0 && (
+            <li style={{ color: "#888", textAlign: "center" }}>
+              No upcoming tasks.
             </li>
-          ))}
-      </ul>
-      <h3>Completed Tasks</h3>
-      <ul style={{ listStyle: "none", padding: 0 }}>
-        {tasks.filter((t) => t.done).length === 0 && (
-          <li>No completed tasks.</li>
-        )}
-        {tasks
-          .filter((t) => t.done)
-          .map((task) => (
-            <li
-              key={task.id}
-              style={{
-                marginBottom: "1rem",
-                background: "#e0ffe0",
-                padding: "1rem",
-                borderRadius: "8px",
-              }}
-            >
-              <strong>{task.topic}</strong> <br />
-              <span style={{ color: "#888" }}>{task.date}</span>
+          )}
+          {tasks
+            .filter((t) => !t.done)
+            .map((task) => (
+              <li className="planner-task" key={task.id}>
+                <div>
+                  <strong>{task.topic}</strong>
+                  <div style={{ color: "#888", fontSize: ".98rem" }}>
+                    {task.date}
+                  </div>
+                </div>
+                <button
+                  className="planner-add-btn"
+                  style={{
+                    background: "#43e97b",
+                    color: "#fff",
+                    padding: ".4rem 1.1rem",
+                    fontSize: ".98rem",
+                  }}
+                  onClick={() => markDone(task.id)}
+                >
+                  Mark as Done
+                </button>
+              </li>
+            ))}
+        </ul>
+        <h3 style={{ marginTop: "2rem", marginBottom: "1rem" }}>
+          Completed Tasks
+        </h3>
+        <ul className="planner-task-list">
+          {tasks.filter((t) => t.done).length === 0 && (
+            <li style={{ color: "#888", textAlign: "center" }}>
+              No completed tasks.
             </li>
-          ))}
-      </ul>
+          )}
+          {tasks
+            .filter((t) => t.done)
+            .map((task) => (
+              <li className="planner-task done" key={task.id}>
+                <div>
+                  <strong>{task.topic}</strong>
+                  <div style={{ color: "#888", fontSize: ".98rem" }}>
+                    {task.date}
+                  </div>
+                </div>
+              </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
+  // ...existing code...
 };
 
 export default StudyPlanner;

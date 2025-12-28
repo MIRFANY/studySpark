@@ -1,0 +1,161 @@
+.community-bg {
+    min-height: 100vh;
+    background: #232a3b url('https://www.transparenttextures.com/patterns/stardust.png');
+    background-size: 300px 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.community-container {
+    background: #fff;
+    border-radius: 24px 12px 24px 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+    padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+    min-width: 340px;
+    max-width: 540px;
+    width: 100%;
+}
+
+.community-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #3a2d5c;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.community-newpost {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+}
+
+.community-newpost textarea {
+    resize: none;
+    border-radius: 8px;
+    border: 1px solid #e6e6fa;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+    min-height: 60px;
+}
+
+.community-newpost button {
+    align-self: flex-end;
+    background: #7c3aed;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.6rem 1.3rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.community-newpost button:hover {
+    background: #a18cd1;
+}
+
+.community-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.community-post {
+    background: #f3e8ff;
+    border-radius: 16px;
+    padding: 1.2rem 1rem;
+    box-shadow: 0 2px 8px rgba(60, 40, 120, 0.07);
+}
+
+.community-post-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.5rem;
+}
+
+.community-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #ffd600;
+}
+
+.community-user {
+    font-weight: 700;
+    color: #7c3aed;
+}
+
+.community-post-content {
+    font-size: 1.08rem;
+    color: #3a2d5c;
+    margin-bottom: 0.7rem;
+}
+
+.community-comments {
+    margin-top: 0.5rem;
+}
+
+.community-comment {
+    font-size: 0.98rem;
+    color: #4b3a6a;
+    margin-bottom: 0.3rem;
+}
+
+.community-comment-user {
+    font-weight: 700;
+    color: #2bd2ff;
+    margin-right: 0.3rem;
+}
+
+.community-comment-btn {
+    background: none;
+    border: none;
+    color: #7c3aed;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 0.3rem;
+}
+
+.community-addcomment {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+}
+
+.community-addcomment input {
+    flex: 1;
+    border-radius: 8px;
+    border: 1px solid #e6e6fa;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.community-addcomment button {
+    background: #2bd2ff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1.1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.community-addcomment button:hover {
+    background: #43e97b;
+}
+
+@media (max-width: 600px) {
+    .community-container {
+        min-width: 0;
+        max-width: 98vw;
+        padding: 1.2rem 0.5rem 1rem 0.5rem;
+    }
+}
